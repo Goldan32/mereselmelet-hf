@@ -30,32 +30,27 @@ C = p(3);
 % Ex2 defines N
 N = 5:5:20*5;
 
-% Defining C (noise) matrix
-M  = size(N,2);
-a_est = cell(M, 1);
-a_var = cell(M, 1);
-a_dis = cell(M, 1);
-for i=1:M
-    [rowIndices, colIndices] = ndgrid(1:N(i), 1:N(i));
-    C_matrix = sigma_w^2 * (ro_2 .^ (abs(rowIndices - colIndices)));
+estimateData.p = p;
+estimateData.N = N;
+estimateData.mu = mu;
+estimateData.sigma_w = sigma_w;
+estimateData.ro_2 = ro_2;
+estimateData.measPercent = 100;
+estimateData.Sigma_aa = Sigma_aa;
+estimateData.f_0 = f_0;
+estimateData.t_0_s = t_0_s;
 
-    % Generating noise as a function of time: w(t)
-    wt = (mvnrnd(zeros(N(i), 1), C_matrix, 1))';
+a_MS_full = MS_estimate(estimateData);
 
-    % Generating sinus signals
-    stepsize = 1/ (N(i)*f_0);
-    t = t_0_s: stepsize: t_0_s + stepsize*(N(i)-1);
+estimateData.measPercent = 10;
+a_MS_10pc = MS_estimate(estimateData);
 
-    U = [(sin(2.*pi.*f_0.*t))' (cos(2.*pi.*f_0.*t))' ones(1, size(t, 2))'];
-    
-    z = U*p + wt;
-    
-    a_est_MS = mu + inv(U'*inv(C_matrix)*U + inv(Sigma_aa))*U'*inv(C_matrix)*(z - U*mu);
-    var_a_est_MS = inv(U'*inv(C_matrix)*U + inv(Sigma_aa));
-    distortion = inv(U'*U)*U'*z - mu;
-    
-    
-end
 
-%% Calculate
+
+
+
+
+
+
+
 
