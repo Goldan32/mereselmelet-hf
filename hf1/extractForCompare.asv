@@ -1,6 +1,0 @@
-function [r] = extractForCompare(a, field)
-    d1 = extractFromCellArray(a.full.diffro.(field));
-    d2 = extractFromCellArray(a.full.diffro.(field));
-    d3 = extractFromCellArray(a.full.diffro.(field));
-    d4 = extractFromCellArray(a.full.diffro.(field));
-end
