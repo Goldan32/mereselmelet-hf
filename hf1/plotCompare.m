@@ -1,12 +1,13 @@
 % a has fields A, B and C. Each field is a matrix where rows are ascending
 % by N and cols are diffrofull, samerofull, diffro10pc, samero10pc in order
-
 function plotCompare(N, a, field, p, appendum)
     global sigma_a
 
     data = extractForCompare(a, field);
     ftable = ['A', 'B', 'C'];
     
+    % Transform the data accordding to the
+    % type of data we want to display
     if strcmp(field, 'est')
         data.A = abs(data.A - p(1));
         data.B = abs(data.B - p(2));

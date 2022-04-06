@@ -1,3 +1,7 @@
+% Extract the results of one measurement from
+% the cell array returned by measureAll().
+% eg. extract results where cycle was full and
+% ro1 = ro2 = 0
 function [matrix] = extractFromCellArray(ca)
     rows = size(ca, 1);
     cols = size(ca{1}, 1);

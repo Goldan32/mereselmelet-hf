@@ -1,3 +1,6 @@
+% Plot spread results of Ex4 and Ex5.
+% Calling this function creates a subplot.
+% eg. plotting the 4 ways A parameter was measured.
 function plotSpread(spr, sig, N, k, t)
     subplot(1, 3, k);
     hold on

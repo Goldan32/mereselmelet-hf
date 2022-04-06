@@ -1,3 +1,5 @@
+% This function is used for plotting each function
+% in its own graph
 function plotEstimate(N, a, p, title_appendum)
 
     figure();

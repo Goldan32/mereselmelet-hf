@@ -1,3 +1,6 @@
+% This function extracts the contents of the cell array
+% returned by measureAll() so that it can be interacted
+% with more easily
 function [r] = extractForCompare(a, field)
     d1 = extractFromCellArray(a.full.diffro.(field));
     d2 = extractFromCellArray(a.full.samero.(field));
