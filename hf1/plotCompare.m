@@ -2,6 +2,8 @@
 % by N and cols are diffrofull, samerofull, diffro10pc, samero10pc in order
 
 function plotCompare(N, a, field, p, appendum)
+    global sigma_a
+
     data = extractForCompare(a, field);
     ftable = ['A', 'B', 'C'];
     
@@ -13,6 +15,10 @@ function plotCompare(N, a, field, p, appendum)
         data.A = sqrt(data.A);
         data.B = sqrt(data.B);
         data.C = sqrt(data.C);
+    elseif strcmp(field, 'emp')
+        data.A = abs(data.A - sigma_a);
+        data.B = abs(data.B - sigma_a);
+        data.C = abs(data.C - sigma_a);
     end
     
     
@@ -30,6 +36,7 @@ function plotCompare(N, a, field, p, appendum)
         legend('ro1,ro2 != 0 & full cycle', 'ro1,ro2 = 0 & full cycle',...
                'ro1,ro2 != 0 & 10% cycle', 'ro1,ro2 = 0 & 10% cycle');
         grid on
+        xlabel('N');
     end
     
     
